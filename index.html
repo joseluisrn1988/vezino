@@ -7,24 +7,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #ffffff;
-            --accent-color: #ff6b6b;
-            --google-blue: #4285F4;
-            --apple-black: #000000;
-            --text-main: #2d3436;
-            --text-secondary: #636e72;
-            --border-color: #dfe6e9;
+            --brand-deep-blue: #1a2b4c; /* Autoridad y Confianza */
+            --brand-success-green: #2ecc71; /* Acción y Crecimiento */
+            --brand-slate-gray: #718096; /* Equilibrio y Neutralidad */
+            --white: #ffffff;
+            --bg-light: #f8fafc;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: var(--brand-deep-blue);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -33,155 +31,165 @@
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--white);
             width: 100%;
             height: 100%;
-            max-width: 450px;
-            padding: 40px 25px;
+            max-width: 480px;
+            padding: 50px 30px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            position: relative;
+            border-radius: 0; /* Pantalla completa en móvil */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
 
         /* Logo y Header */
-        .logo-section {
+        .header-section {
             text-align: center;
-            margin-bottom: 40px;
-            margin-top: 20px;
+            margin-bottom: 45px;
         }
 
-        .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
-            border-radius: 20px;
-            margin: 0 auto 15px;
+        .brand-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--brand-deep-blue);
+            color: var(--brand-success-green);
+            border-radius: 18px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 40px;
-            box-shadow: 0 8px 15px rgba(255, 107, 107, 0.3);
+            font-size: 32px;
+            box-shadow: 0 10px 20px rgba(26, 43, 76, 0.2);
         }
 
         h1 {
-            font-size: 24px;
-            color: var(--text-main);
-            font-weight: 700;
+            color: var(--brand-deep-blue);
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             margin-bottom: 8px;
         }
 
-        p.subtitle {
-            color: var(--text-secondary);
-            font-size: 14px;
+        .tagline {
+            color: var(--brand-slate-gray);
+            font-size: 15px;
+            font-weight: 400;
         }
 
-        /* Botones de Redes Sociales */
-        .auth-buttons {
-            width: 100%;
+        /* Botones Sociales */
+        .social-group {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 14px;
+            margin-bottom: 30px;
         }
 
-        .btn-social {
+        .btn-auth {
             width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
             font-size: 15px;
+            transition: all 0.2s ease;
             cursor: pointer;
-            transition: transform 0.1s ease;
             text-decoration: none;
+            color: var(--brand-deep-blue);
         }
 
-        .btn-social:active {
-            transform: scale(0.98);
+        .btn-auth:active {
+            transform: scale(0.97);
+            background-color: #f7fafc;
         }
 
-        .btn-google { background: white; color: var(--text-main); }
-        .btn-apple { background: var(--apple-black); color: white; border: none; }
-        
-        .btn-social i {
+        .btn-apple {
+            background: #000;
+            color: white;
+            border: none;
+        }
+
+        .btn-auth i {
             margin-right: 12px;
             font-size: 18px;
         }
 
-        /* Separador */
-        .separator {
-            width: 100%;
+        /* Divider */
+        .divider {
             display: flex;
             align-items: center;
-            text-align: center;
-            margin: 20px 0;
-            color: var(--text-secondary);
+            margin-bottom: 30px;
+            color: var(--brand-slate-gray);
             font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .separator::before, .separator::after {
-            content: '';
+        .divider::before, .divider::after {
+            content: "";
             flex: 1;
-            border-bottom: 1px solid var(--border-color);
+            height: 1px;
+            background: #e2e8f0;
         }
 
-        .separator span {
-            padding: 0 10px;
+        .divider span {
+            padding: 0 15px;
         }
 
-        /* Formulario Tradicional */
-        .input-group {
+        /* Formulario */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .input-control {
             width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background: #f9f9f9;
-            font-size: 15px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1.5px solid #e2e8f0;
+            background: var(--bg-light);
+            font-size: 16px;
+            color: var(--brand-deep-blue);
             outline: none;
-            transition: border 0.3s;
+            transition: border-color 0.3s;
         }
 
-        .input-field:focus {
-            border-color: var(--accent-color);
+        .input-control:focus {
+            border-color: var(--brand-deep-blue);
             background: white;
         }
 
-        .btn-main {
+        .btn-submit {
             width: 100%;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 18px;
+            border-radius: 14px;
             border: none;
-            background: var(--accent-color);
+            background-color: var(--brand-success-green);
             color: white;
             font-weight: 700;
             font-size: 16px;
-            margin-top: 10px;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+            transition: transform 0.2s;
         }
 
-        /* Footer legal */
-        .footer-text {
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer */
+        .legal-footer {
             margin-top: auto;
             text-align: center;
-            font-size: 12px;
-            color: var(--text-secondary);
-            line-height: 1.5;
+            font-size: 13px;
+            color: var(--brand-slate-gray);
+            line-height: 1.6;
         }
 
-        .footer-text a {
-            color: var(--text-main);
-            font-weight: 600;
+        .legal-footer a {
+            color: var(--brand-deep-blue);
+            font-weight: 700;
             text-decoration: none;
         }
     </style>
@@ -189,36 +197,37 @@
 <body>
 
     <div class="login-container">
-        <div class="logo-section">
-            <div class="logo-placeholder">
-                <i class="fas fa-handshake"></i>
+        <div class="header-section">
+            <div class="brand-icon">
+                <i class="fas fa-shopping-bag"></i>
             </div>
             <h1>Conecta Venta</h1>
-            <p class="subtitle">Vende y compra cerca de ti</p>
+            <p class="tagline">La red social de comercio local</p>
         </div>
 
-        <div class="auth-buttons">
-            <div class="btn-social btn-google">
-                <i class="fab fa-google" style="color: #EA4335;"></i> Continuar con Google
+        <div class="social-group">
+            <div class="btn-auth">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:18px; margin-right:12px;"> 
+                Continuar con Google
             </div>
-            <div class="btn-social btn-apple">
+            <div class="btn-auth btn-apple">
                 <i class="fab fa-apple"></i> Continuar con Apple
             </div>
         </div>
 
-        <div class="separator">
-            <span>o usa tu cuenta</span>
+        <div class="divider">
+            <span>o accede con</span>
         </div>
 
-        <div class="input-group">
-            <input type="text" class="input-field" placeholder="Email o número de teléfono">
+        <div class="form-group">
+            <input type="text" class="input-control" placeholder="Email o teléfono">
         </div>
 
-        <button class="btn-main">Entrar ahora</button>
+        <button class="btn-submit">Ingresar</button>
 
-        <div class="footer-text">
-            Al continuar, aceptas nuestros <br>
-            <a href="#">Términos de Servicio</a> y <a href="#">Política de Privacidad</a>.
+        <div class="legal-footer">
+            Al registrarte, aceptas nuestras <br>
+            <a href="#">Condiciones de uso</a> y <a href="#">Privacidad</a>.
         </div>
     </div>
 
